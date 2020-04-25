@@ -52,10 +52,16 @@ public class Functions {
         }
         sum -= x50 * 50;
         x20 = sum / 20;
-        if (atm1.getCoins20() < x20) {
-            x20 = atm1.getCoins20();
-        }
         sum -= x20 * 20;
+        if (sum == 10 && x50 > 0) {
+            x50--;
+            x20 += 3;
+            sum = 0;
+        }
+        if (atm1.getCoins20() < x20) {
+            System.out.println("Сумма не может быть выдана");
+            return false;
+        }
         if (sum != 0) {
             System.out.println("Сумма не может быть выдана");
             return false;

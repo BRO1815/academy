@@ -12,14 +12,14 @@ public class Task5 {
         String str = sc.nextLine();
         sc.close();
         String regexp = "([а-яА-Я]+)|([a-zA-Z]+)";
-        StringBuilder rezult = new StringBuilder();
+        StringBuilder result = new StringBuilder();
 
         Pattern pattern = Pattern.compile(regexp);
         Matcher matcher = pattern.matcher(str);
 
         while (matcher.find()) {
-            rezult.append(str.substring(matcher.end() - 1, matcher.end()));
+            result.append(str.substring(matcher.end() - 1, matcher.end()));
         }
-        System.out.println(rezult);
+        System.out.println(result);
     }
 }
