@@ -1,11 +1,16 @@
 package by.academy.Deal;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class Deal {
 
     private User buyer;
     private User seller;
     private Product[] products;
     private double fullPrice;
+    private StringBuilder dealInformation = new StringBuilder();
+    private Date deadlineDate;
 
     public Deal() {
         super();
@@ -16,6 +21,13 @@ public class Deal {
         this.buyer = buyer;
         this.seller = seller;
         this.products = products;
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.DATE, 10);
+        deadlineDate = calendar.getTime();
+    }
+
+    public StringBuilder getDealInformation() {
+        return dealInformation;
     }
 
     public User getBuyer() {
@@ -50,22 +62,54 @@ public class Deal {
         this.fullPrice = fullPrice;
     }
 
+    public Date getDeadlineDate() {
+        return deadlineDate;
+    }
+
+    public void setDeadlineDate(Date deadlineDate) {
+        this.deadlineDate = deadlineDate;
+    }
+
     public void deal() {
+
+        addInformation();
+
         double summ = 0;
 
-
-        for (Product p : products) {
-            summ += p.getSumPrice();
+        for (int p = 0; products[p] != null && p < products.length; p++) {
+            summ += products[p].getSumPrice();
         }
-        System.out.println("Сумма сделки: " + summ);
+        dealInformation.append("Сумма сделки: ");
+        dealInformation.append(summ);
 
         if (summ <= buyer.getMoney()) {
             buyer.setMoney(buyer.getMoney() - summ);
             seller.setMoney(seller.getMoney() + summ);
             this.fullPrice = summ;
         } else {
-            System.out.println("У " + buyer.getName() + " недостаточно денег для завершения сделки");
+            dealInformation.append("\n");
+            dealInformation.append("Сделка не состоялась, у покупателя недостаточно денег.");
         }
+    }
+
+    private void addInformation() {
+
+        dealInformation.append("Сделка между продавцом ");
+        dealInformation.append(seller.getName());
+        dealInformation.append(" и покупателем ");
+        dealInformation.append(buyer.getName());
+        dealInformation.append("\n");
+        dealInformation.append("Товар\t\t| Количество | Стоимость ");
+        dealInformation.append("\n");
+        for (int i = 0; products[i] != null && i < products.length; i++) {
+            dealInformation.append(products[i].getTitle());
+            dealInformation.append(" \t\t| ");
+            dealInformation.append(products[i].getQuantity());
+            dealInformation.append("\t\t | ");
+            dealInformation.append(products[i].getSumPrice());
+            dealInformation.append("\n");
+        }
+
     }
 }
 
