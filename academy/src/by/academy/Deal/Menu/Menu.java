@@ -7,11 +7,11 @@ import java.util.Scanner;
 
 public class Menu {
 
-    private Product[] product;
+    private Product[] products;
 
 
-    public Product[] menu(User buyer, User seller, Product[] product) {
-        this.product = product;
+    public void menu(User buyer, User seller, Product[] product) {
+        this.products = product;
         ChangeUserData changeBuyerData = new ChangeUserData();
         ChangeUserData changeSellerData = new ChangeUserData();
         ChangeOrder changeOrder = new ChangeOrder();
@@ -39,14 +39,14 @@ public class Menu {
                     changeSellerData.ChangeUserData(seller);
                     break;
                 case 3:
-
+                    changeOrder.addProduct(products);
                     break;
             }
 
 
         }
         scan.close();
-        return product;
+        product=products;
     }
 }
 
