@@ -18,10 +18,9 @@ public class ChangeOrder {
         this.cell = cell;
     }
 
-
-
     public Product[] addProduct(Product[] product) {
         this.addProducts = product;
+
         for (int i = 0; i <= addProducts.length; i++) {
             if (i == addProducts.length) {
                 System.out.println("Корзина заполнена");

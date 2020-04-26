@@ -18,11 +18,12 @@ public class Menu {
         Scanner scan = new Scanner(System.in);
         String sc;
         int i = 0;
-        while (i != 4) {
+        while (i != 5) {
             System.out.println("1-Внести новые данные покупателя");
             System.out.println("2-Внести новые данные продавца");
             System.out.println("3-Добавить товар");
-            System.out.println("4-Выйти");
+            System.out.println("4-Удалить товар по наименованию");
+            System.out.println("5-Выйти");
             sc = scan.next();
 
             try {
@@ -41,13 +42,31 @@ public class Menu {
                 case 3:
                     changeOrder.addProduct(products);
                     break;
-            }
+                case 4:
+                    System.out.println("Наименование товара");
+                    sc = scan.next();
+                    for (int z = 0; z <= products.length; z++) {
+                        if (z == products.length) {
+                            System.out.println("Совпадений нет");
+                            break;
+                        }
+                        if (products[z] != null && products[z].getTitle().equals(sc)) {
+                            for (int x = z; x + 1 < products.length; x++) {
+                                products[x] = products[x + 1];
+                            }
+                            products[product.length] = null;
+                        }
 
+                    }
+                    break;
+            }
 
         }
         scan.close();
-        product=products;
+        product = products;
     }
 }
+
+
 
 
