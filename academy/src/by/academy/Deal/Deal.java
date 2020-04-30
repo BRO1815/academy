@@ -76,7 +76,7 @@ public class Deal {
 
         double summ = 0;
 
-        for (int p = 0; products[p] != null && p < products.length; p++) {
+        for (int p = 0; p < products.length && products[p] != null; p++) {
             summ += products[p].getSumPrice();
         }
         dealInformation.append("Сумма сделки: ");
@@ -101,7 +101,7 @@ public class Deal {
         dealInformation.append("\n");
         dealInformation.append("Товар\t\t| Количество | Стоимость ");
         dealInformation.append("\n");
-        for (int i = 0; products[i] != null && i < products.length; i++) {
+        for (int i = 0; i < products.length && products[i] != null; i++) {
             dealInformation.append(products[i].getTitle());
             dealInformation.append(" \t\t| ");
             dealInformation.append(products[i].getQuantity());
