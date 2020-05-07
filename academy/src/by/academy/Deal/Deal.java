@@ -3,7 +3,8 @@ package by.academy.Deal;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Deal {
+public class Deal  {
+
 
     private User buyer;
     private User seller;
@@ -92,8 +93,8 @@ public class Deal {
         }
     }
 
-    private void addInformation() {
-
+    public void addInformation() {
+        dealInformation.delete(0,dealInformation.length());
         dealInformation.append("Сделка между продавцом ");
         dealInformation.append(seller.getName());
         dealInformation.append(" и покупателем ");
