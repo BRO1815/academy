@@ -54,9 +54,8 @@ public class Menu {
                             for (int x = z; x + 1 < products.length; x++) {
                                 products[x] = products[x + 1];
                             }
-                            products[products.length-1] = null;
+                            products[products.length - 1] = null;
                         }
-
                     }
                     break;
             }
