@@ -23,7 +23,7 @@ public class Menu {
             System.out.println("2-Внести новые данные продавца");
             System.out.println("3-Добавить товар");
             System.out.println("4-Удалить товар по наименованию");
-            System.out.println("5-Выйти");
+            System.out.println("5-Завершить сделку");
             sc = scan.next();
 
             try {

@@ -1,6 +1,6 @@
 package by.academy.homework4.Task3;
 
-public class ArrayIterator<T> {
+ class ArrayIterator<T> {
     private T[] array;
 
     public void setIndex(int index) {
