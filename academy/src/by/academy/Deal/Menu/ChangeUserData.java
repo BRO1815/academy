@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ChangeUserData {
     String data;
 
-    public void ChangeUserData(User user) {
+    public void changeUserData(User user) {
         Scanner scan = new Scanner(System.in);
         System.out.println("Имя");
         data = scan.next();

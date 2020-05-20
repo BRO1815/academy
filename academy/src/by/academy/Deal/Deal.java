@@ -1,10 +1,14 @@
 package by.academy.Deal;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class Deal  {
-
+public class Deal {
 
     private User buyer;
     private User seller;
@@ -74,7 +78,6 @@ public class Deal  {
     public void deal() {
 
         addInformation();
-
         double summ = 0;
 
         for (int p = 0; p < products.length && products[p] != null; p++) {
@@ -94,7 +97,7 @@ public class Deal  {
     }
 
     public void addInformation() {
-        dealInformation.delete(0,dealInformation.length());
+        dealInformation.delete(0, dealInformation.length());
         dealInformation.append("Сделка между продавцом ");
         dealInformation.append(seller.getName());
         dealInformation.append(" и покупателем ");
@@ -110,7 +113,31 @@ public class Deal  {
             dealInformation.append(products[i].getSumPrice());
             dealInformation.append("\n");
         }
+    }
 
+    public void chequeInFile() {
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
+        StringBuilder chequeName = new StringBuilder();
+        Date date = new Date();
+
+        chequeName.append("Deal_");
+        chequeName.append(buyer.getName());
+        chequeName.append("-");
+        chequeName.append(seller.getName());
+        chequeName.append(" ");
+        chequeName.append(sdf.format(date));
+        chequeName.append(".txt");
+
+        File file = new File("academy/src/by/academy/Deal/Cheque", String.valueOf(chequeName));
+
+        try (PrintWriter printWriter = new PrintWriter(file)) {
+            if (!file.exists()) {
+                file.createNewFile();
+            }
+            printWriter.println(dealInformation);
+        } catch (IOException e) {
+            System.out.println("Ошибка формирования чека, файл не создан \n");
+        }
     }
 }
 
