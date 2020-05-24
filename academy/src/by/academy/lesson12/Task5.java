@@ -17,12 +17,11 @@ public class Task5 {
             File[] ld = dir.listFiles();
 
             for (int i = ld.length - 1; i >= 0; i--) {
+
                 if (ld[i].isFile()) {
                     System.out.println("Файл " + ld[i].getName());
-                } else {
-                    showListFile(ld[i]);
                 }
-
+                showListFile(ld[i]);
             }
         }
     }
