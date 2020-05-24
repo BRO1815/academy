@@ -105,6 +105,7 @@ public class Deal {
         dealInformation.append("\n");
         dealInformation.append("Товар\t\t| Количество | Стоимость ");
         dealInformation.append("\n");
+
         for (int i = 0; i < products.length && products[i] != null; i++) {
             dealInformation.append(products[i].getTitle());
             dealInformation.append(" \t\t| ");
